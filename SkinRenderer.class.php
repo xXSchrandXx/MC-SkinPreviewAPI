@@ -2,7 +2,7 @@
 
 namespace wcf\system\api\xXSchrandXx\MCSkinPreviewAPI;
 
-/* 
+    /* 
 	 * SkinPreview.class.php - Library to render previews of Minecraft (tm) skins
 	 * Copyright (C) 2022 xXSchrandXx
 	 * 
@@ -23,7 +23,9 @@ namespace wcf\system\api\xXSchrandXx\MCSkinPreviewAPI;
 class SkinRenderer
 {
 
+    /** @var int the width of the rendered skin (corresponding height will be calculated automatically) */
     private $skin_width;
+    /** @var string the skin file that will be used if the requested skin can't be loaded */
     private $fallback_skin_path;
 
     /**
@@ -46,7 +48,7 @@ class SkinRenderer
      * @param string $skin_side the side of the skin to render; must be 'front' or 'back'
      *
      * @return \GdImage|resource|false A resource containing the rendered skin.
-     *                                You can use it with functions like imagepng.
+     *                                 You can use it with functions like imagepng.
      */
     public function renderSkinFromPath($skin_path, $skin_type = 'steve', $skin_side = 'front')
     {
@@ -70,7 +72,7 @@ class SkinRenderer
      * @param string $skin_side the side of the skin to render; must be 'front' or 'back'
      *
      * @return \GdImage|resource|false A resource containing the rendered skin.
-     *                                You can use it with functions like imagepng.
+     *                                 You can use it with functions like imagepng.
      */
     public function renderSkinFromResource($skin, $skin_type = 'steve', $skin_side = 'front')
     {
