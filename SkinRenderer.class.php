@@ -43,8 +43,8 @@ class SkinRenderer
      * @param string $skin_type the skin type; must be 'steve' or 'alex'
      * @param string $skin_side the side of the skin to render; must be 'front' or 'back'
      *
-     * @return resource A resource containing the rendered skin.
-     *         You can use it with functions like imagepng.
+     * @return GdImage|resource|false A resource containing the rendered skin.
+     *                                You can use it with functions like imagepng.
      */
     public function renderSkinFromPath($skin_path, $skin_type = 'steve', $skin_side = 'front')
     {
@@ -63,12 +63,12 @@ class SkinRenderer
     /**
      * Renders a local Minecraft skin from its bitmap.
      *
-     * @param resource $skin a resource containing the actual skin to render
+     * @param GdImage|resource $skin a resource containing the actual skin to render
      * @param string $skin_type the skin type; must be 'steve' or 'alex'
      * @param string $skin_side the side of the skin to render; must be 'front' or 'back'
      *
-     * @return resource A resource containing the rendered skin.
-     *         You can use it with functions like imagepng.
+     * @return GdImage|resource|false A resource containing the rendered skin.
+     *                                You can use it with functions like imagepng.
      */
     public function renderSkinFromResource($skin, $skin_type = 'steve', $skin_side = 'front')
     {
@@ -214,10 +214,10 @@ class SkinRenderer
     /**
      * Resizes a bitmap to the specified width. The height will be calculated automatically.
      *
-     * @param resource $bmp the image to be resized
+     * @param GdImage|resource $bmp the image to be resized
      * @param int $width the width of the final bitmap
      *
-     * @return resource the resized image
+     * @return GdImage|resource|false the resized image
      */
     private function resizeBitmap(&$bmp, $width)
     {
@@ -239,8 +239,8 @@ class SkinRenderer
      * Flips a part of a bitmap horizontally and draws it onto another bitmap.
      * Behaves like imagecopy.
      *
-     * @param resource $dest the bitmap we will be drawing onto
-     * @param resource $src the bitmap that contains the pixels to flip
+     * @param GdImage|resource $dest the bitmap we will be drawing onto
+     * @param GdImage|resource $src the bitmap that contains the pixels to flip
      * @param int $dst_x x-coordinate of destination point
      * @param int $dst_y y-coordinate of destination point
      * @param int $src_x x-coordinate of source point
@@ -271,7 +271,7 @@ class SkinRenderer
     /**
      * Flips all the pixels of a bitmap horizontally.
      *
-     * @param resource $bmp the bitmap to flip
+     * @param GdImage|resource $bmp the bitmap to flip
      */
     private function flipHorizontal(&$bmp)
     {
@@ -295,8 +295,8 @@ class SkinRenderer
     /**
      * Overlays an armor part onto a destination.
      *
-     * @param resource $armor the bitmap containing an armor part
-     * @param resource $dest the bitmap to draw the armor on to
+     * @param GdImage|resource $armor the bitmap containing an armor part
+     * @param GdImage|resource $dest the bitmap to draw the armor on to
      * @param int $dst_x x-coordinate of destination point
      * @param int $dst_y y-coordinate of destination point
      * @param int $x x-coordinate of source point
@@ -314,7 +314,7 @@ class SkinRenderer
     /**
      * Checks if all the pixels of a determined area are either transparent or black.
      *
-     * @param resource $img the bitmap containing the pixels to check
+     * @param GdImage|resource $img the bitmap containing the pixels to check
      * @param int $x x-coordinate of source point
      * @param int $y y-coordinate of source point
      * @param int $w source width
@@ -347,7 +347,7 @@ class SkinRenderer
     /**
      * Checks if a skin is of the post-1.8 format.
      *
-     * @param resource $skin the skin to check
+     * @param GdImage|resource $skin the skin to check
      *
      * @return bool true if the skin is in post-1.8 format, else false
      */
