@@ -3,7 +3,7 @@
 This Resource is forked from [outadoc/MC-SkinPreviewAPI](https://github.com/outadoc/MC-SkinPreviewAPI).
 Changes can be found [here](https://github.com/xXSchrandXx/MC-SkinPreviewAPI/commits/).
 
-The Resource got changed to use [Woltlab](www.woltlab.com) API.
+The Resource got changed to use [Woltlab](https://www.woltlab.com) API.
 
 ===========================
 
