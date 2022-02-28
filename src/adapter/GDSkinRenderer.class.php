@@ -452,4 +452,12 @@ class GDSkinRenderer implements ISkinRenderer
     {
         $this->skin_width = $width;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function writeImage($img, $file_path)
+    {
+        return \imagepng($img, $file_path);
+    }
 }

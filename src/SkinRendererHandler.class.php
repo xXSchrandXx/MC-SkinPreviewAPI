@@ -121,4 +121,12 @@ class SkinRendererHandler implements ISkinRenderer
     {
         $this->adapter->setSkinWidth($width);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function writeImage($img, $file_path)
+    {
+        return $this->adapter->writeImage($img, $file_path);
+    }
 }

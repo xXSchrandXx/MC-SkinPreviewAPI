@@ -143,4 +143,14 @@ interface ISkinRenderer
      * @param int $width the width of the skin preview
      */
     public function setSkinWidth($width);
+
+    /**
+     * Writes the image to the given path.
+     *
+     * @param \GdImage|\Imagick|resource $img the bitmap to save.
+     * @param string $file_path the path of the file.
+     * 
+     * @return bool weather save was successful
+     */
+    public function writeImage($img, $file_path);
 }
