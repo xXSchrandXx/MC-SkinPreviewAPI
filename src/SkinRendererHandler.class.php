@@ -3,7 +3,7 @@
 namespace wcf\system\api\xXSchrandXx\MCSkinPreviewAPI;
 
 use wcf\system\api\xXSchrandXx\MCSkinPreviewAPI\adapter\GDSkinRenderer;
-use wcf\system\api\xXSchrandXx\MCSkinPreviewAPI\adapter\ImagickImageAdapter;
+use wcf\system\api\xXSchrandXx\MCSkinPreviewAPI\adapter\ImagickSkinRenderer;
 use wcf\system\api\xXSchrandXx\MCSkinPreviewAPI\adapter\ISkinRenderer;
 
 /* 
@@ -36,9 +36,9 @@ class SkinRendererHandler implements ISkinRenderer
     public function __construct($render_width = 85)
     {
         if (\IMAGE_ADAPTER_TYPE !== 'gd') {
-            $this->adapter = new GDSkinRenderer($render_width);
+            $this->adapter = new ImagickSkinRenderer($render_width);
         } else {
-            $this->adapter = new ImagickImageAdapter($render_width);
+            $this->adapter = new GDSkinRenderer($render_width);
         }
     }
 

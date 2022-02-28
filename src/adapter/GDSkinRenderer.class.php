@@ -47,13 +47,36 @@ class GDSkinRenderer implements ISkinRenderer
             return false;
         }
 
-        return $this->renderSkinFromResource($skin, $skin_type, $skin_side);
+        return $this->renderSkin($skin, $skin_type, $skin_side);
     }
 
     /**
      * @inheritDoc
      */
     public function renderSkinFromResource($skin, $skin_type = 'steve', $skin_side = 'front')
+    {
+        if (\is_string($skin)) {
+            $skin = imagecreatefromstring($skin);
+        }
+
+        // If for some reason we couldn't download the file, use a steve skin instead
+        if ($skin === false) {
+            return false;
+        }
+
+        return $this->renderSkin($skin, $skin_type, $skin_side);
+    }
+
+    /**
+     * Renders a local Minecraft skin from intern resource.
+     *
+     * @param \GdImage|resource $skin a resource containing the actual skin to render
+     * @param string $skin_type the skin type; must be 'steve' or 'alex'
+     * @param string $skin_side the side of the skin to render; must be 'front', 'back' or 'face'
+     *
+     * @return \GdImage|false A resource containing the rendered skin.
+     */
+    private function renderSkin($skin, $skin_type = 'steve', $skin_side = 'front')
     {
         if ($skin_side == 'face') {
             // Create the destination image (8*8 transparent png file)

@@ -22,7 +22,7 @@ use wcf\system\api\xXSchrandXx\MCSkinPreviewAPI\adapter\ISkinRenderer;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-class ImagickImageAdapter implements ISkinRenderer
+class ImagickSkinRenderer implements ISkinRenderer
 {
 
     /** @var int the width of the rendered skin (corresponding height will be calculated automatically) */
@@ -67,7 +67,9 @@ class ImagickImageAdapter implements ISkinRenderer
     public function renderSkinFromResource($skin, $skin_type = 'steve', $skin_side = 'front')
     {
         try {
-            $this->skinImagick->readImageBlob($skin);
+            if (\is_string($skin)) {
+                $this->skinImagick->readImageBlob($skin);
+            }
 
             return $this->renderSkin($skin_type, $skin_side);
         } catch (\ImagickException $e) {
