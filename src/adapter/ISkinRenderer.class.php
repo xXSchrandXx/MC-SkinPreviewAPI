@@ -36,20 +36,18 @@ interface ISkinRenderer
      * @param string $skin_type the skin type; must be 'steve' or 'alex'
      * @param string $skin_side the side of the skin to render; must be 'front', 'back' or 'face'
      *
-     * @return resource|\GdImage|false A resource containing the rendered skin.
-     *                                 You can use it with functions like imagepng.
+     * @return \GdImage|\Imagick|resource|false A resource containing the rendered skin.
      */
     public function renderSkinFromPath($skin_path, $skin_type = 'steve', $skin_side = 'front');
 
     /**
      * Renders a local Minecraft skin from its bitmap.
      *
-     * @param resource|\GdImage $skin a resource containing the actual skin to render
+     * @param resource|\GdImage|string $skin a resource containing the actual skin to render
      * @param string $skin_type the skin type; must be 'steve' or 'alex'
      * @param string $skin_side the side of the skin to render; must be 'front', 'back' or 'face'
      *
-     * @return resource|\GdImage|false A resource containing the rendered skin.
-     *                                 You can use it with functions like imagepng.
+     * @return \GdImage|\Imagick|resource|false A resource containing the rendered skin.
      */
     public function renderSkinFromResource($skin, $skin_type = 'steve', $skin_side = 'front');
 
@@ -67,11 +65,11 @@ interface ISkinRenderer
     /**
      * Resizes a bitmap to the specified width. The height will be calculated automatically.
      *
-     * @param \GdImage|resource $bmp the image to be resized
+     * @param \GdImage|\Imagick|resource $bmp the image to be resized
      * @param int $width the width of the final bitmap
      * @param int $width the height of the final bitmap
      *
-     * @return \GdImage|resource|false the resized image
+     * @return \GdImage|\Imagick|resource|false the resized image
      */
     public function resizeBitmap(&$bmp, $width, $height);
 
@@ -79,8 +77,8 @@ interface ISkinRenderer
      * Flips a part of a bitmap horizontally and draws it onto another bitmap.
      * Behaves like imagecopy.
      *
-     * @param resource|\GdImage $dest the bitmap we will be drawing onto
-     * @param resource|\GdImage $src the bitmap that contains the pixels to flip
+     * @param \GdImage|\Imagick|resource $dest the bitmap we will be drawing onto
+     * @param \GdImage|\Imagick|resource $src the bitmap that contains the pixels to flip
      * @param int $dst_x x-coordinate of destination point
      * @param int $dst_y y-coordinate of destination point
      * @param int $src_x x-coordinate of source point
@@ -95,7 +93,7 @@ interface ISkinRenderer
     /**
      * Flips all the pixels of a bitmap horizontally.
      *
-     * @param resource|\GdImage $bmp the bitmap to flip
+     * @param \GdImage|\Imagick|resource $bmp the bitmap to flip
      * 
      * @return bool false on error.
      */
@@ -104,8 +102,8 @@ interface ISkinRenderer
     /**
      * Overlays an armor part onto a destination.
      *
-     * @param resource|\GdImage $armor the bitmap containing an armor part
-     * @param resource|\GdImage $dest the bitmap to draw the armor on to
+     * @param \GdImage|\Imagick|resource $armor the bitmap containing an armor part
+     * @param \GdImage|\Imagick|resource $dest the bitmap to draw the armor on to
      * @param int $dst_x x-coordinate of destination point
      * @param int $dst_y y-coordinate of destination point
      * @param int $x x-coordinate of source point
@@ -120,7 +118,7 @@ interface ISkinRenderer
     /**
      * Checks if all the pixels of a determined area are either transparent or black.
      *
-     * @param resource|\GdImage $img the bitmap containing the pixels to check
+     * @param \GdImage|\Imagick|resource $img the bitmap containing the pixels to check
      * @param int $x x-coordinate of source point
      * @param int $y y-coordinate of source point
      * @param int $w source width
@@ -133,7 +131,7 @@ interface ISkinRenderer
     /**
      * Checks if a skin is of the post-1.8 format.
      *
-     * @param resource|\GdImage $skin the skin to check
+     * @param \GdImage|\Imagick|resource $skin the skin to check
      *
      * @return bool true if the skin is in post-1.8 format, else false
      */

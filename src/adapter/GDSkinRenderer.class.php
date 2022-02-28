@@ -242,7 +242,7 @@ class GDSkinRenderer implements ISkinRenderer
             return $this->resizeBitmap($preview, $this->skin_width, $this->skin_width * 2);
         } else if ($skin_side == 'face') {
             // Face
-            if (imagecopy($preview, $skin, 4, 0, 24, 8, 8, 8) === false) {
+            if (imagecopy($preview, $skin, 0, 0, 24, 8, 8, 8) === false) {
                 return false;
             }
 
