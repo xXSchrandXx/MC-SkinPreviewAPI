@@ -1,6 +1,6 @@
 <?php
 
-	require_once 'SkinPreview.class.php';
+	require_once 'SkinRenderer.class.php';
 
 	// Disable error messages, since we're trying to send binary data
 	error_reporting(0);
